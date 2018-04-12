@@ -19,6 +19,16 @@
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
 				<version>1.2.1.Final</version>
+				<configuration>
+                    <add-user>
+                        <users>
+                            <user>
+                                <username>admin</username>
+                                <password>password</password>
+                            </user>
+                       </users>
+                   </add-user>
+               </configuration>
 			</plugin>
 		</plugins>
 	</build>
