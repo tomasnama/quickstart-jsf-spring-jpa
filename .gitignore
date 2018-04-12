@@ -16,3 +16,5 @@
 .classpath
 .project
 .settings
+
+/quickstart-jsf-spring-jpa/target
