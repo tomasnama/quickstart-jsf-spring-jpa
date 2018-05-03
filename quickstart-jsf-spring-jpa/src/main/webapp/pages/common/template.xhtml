@@ -11,7 +11,7 @@
 
 <h:body>
 <p:layout fullPage="true">  
-     <p:layoutUnit position="north" resizable="true" size="105" minSize="22" maxSize="100" styleClass="layoutUnitnorth">
+     <p:layoutUnit position="north" resizable="true" size="105" minSize="22" maxSize="100">
      	<p:spacer width="100%" height="71" id="s1"/>
      	<div class="top" >
      		<div style="width: 45px; float: left;">		
@@ -23,18 +23,21 @@
      	</div>
     </p:layoutUnit>
      
-    <p:layoutUnit position="west" size="206" header="Test" resizable="true" closable="false" collapsible="true" styleClass="layoutUnitwest">
+    <p:layoutUnit position="west" size="206" header="Test" resizable="true" closable="false" collapsible="true" >
     <h:form id="form">           
     	<p:growl id="msgs" showDetail="true" />
 	        <p:accordionPanel>
-		        
-		       
+		        <p:tab title="Test Flow A">
+	                <p:commandButton action="flowA"  value="Flow A" icon="ui-icon-arrowreturn-1-e"/>
+		        </p:tab>
 	    	</p:accordionPanel>
 	     </h:form>	
    	</p:layoutUnit>
 
     <p:layoutUnit position="center">
-        <ui:insert name="body">  </ui:insert>
+        <ui:insert name="body">  
+        
+        </ui:insert>
     </p:layoutUnit>
  
 </p:layout>

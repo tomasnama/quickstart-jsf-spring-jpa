@@ -7,16 +7,18 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="pages/common/template.xhtml">
+<ui:composition template="/pages/common/template.xhtml">
 	<ui:define name="pageTitle">
-	    Index
+	    Page 3
 	</ui:define>
 	<ui:define name="body">
-	    <p>Index OK</p>
-	    <h:form>
-		    <p:commandButton value="flowA" action="flowA" />
-		  </h:form>
+
+		<h1>Pagina fuera de flowA</h1>
+		<h:form prependId="false">
+			<p>flowScope value, es vacio: #{flowScope.value}</p>
+			<p:commandButton value="Home Page" action="/index" />
+		</h:form>
 	</ui:define>
-	
+
 </ui:composition>
 </html>
