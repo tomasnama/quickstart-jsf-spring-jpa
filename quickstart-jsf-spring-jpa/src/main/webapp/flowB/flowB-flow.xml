@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+	<navigation-rule>
+		<display-name>flowB/page1.xhtml</display-name>
+		<from-view-id>/flowB/page1.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>goPage2</from-outcome>
+			<to-view-id>/flowB/page2.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>flowB/page2.xhtml</display-name>
+		<from-view-id>/flowB/page2.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>goPage1</from-outcome>
+			<to-view-id>/flowB/page1.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+</faces-config>

@@ -9,20 +9,18 @@
 
 <ui:composition template="/pages/common/template.xhtml">
 	<ui:define name="pageTitle">
-	    Page 3
+	    Page 2
 	</ui:define>
 	<ui:define name="body">
-		<p:panel id="basic" header="Page 3 OK" style="margin-bottom:20px">
+		<p:panel id="basic" header="Page 2" style="margin-bottom:20px">
 			<h:form prependId="false">
-			 <h:panelGrid columns="2" cellpadding="10">
-			 	<h:outputText value="value:"/>
-			 	<h:outputText value="#{flowScope.value}"/>
-			 	<p:commandButton id="back_a2" value="back" action="flowA1" />
-			 	<p:commandButton id="return" value="return" action="return1" />
-			 </h:panelGrid>
+				<h:panelGrid columns="1" cellpadding="10">
+			 		<h:outputText value="Flow B Page 2"/>
+			 		<p:commandButton id="back" value="home" action="home" />
+					<p:commandButton id="next" value="Page 1" action="goPage1" />
+				</h:panelGrid>
 			</h:form>
 		</p:panel>
 	</ui:define>
-
 </ui:composition>
 </html>

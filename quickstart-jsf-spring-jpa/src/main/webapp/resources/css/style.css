@@ -1,1 +1,9 @@
 @charset "ISO-8859-1";
+
+.ui-accordion .ui-accordion-content {
+	padding: 0 0 !important;
+}
+
+.top {
+	background-color: 	#E6E6FA;
+}

@@ -12,13 +12,14 @@
 	    Page 3
 	</ui:define>
 	<ui:define name="body">
-
-		<h1>Pagina fuera de flowA</h1>
-		<h:form prependId="false">
-			<p>flowScope value, es vacio: #{flowScope.value}</p>
-			<p:commandButton value="Home Page" action="/index" />
-		</h:form>
+		<p:panel id="basic" header="Pagina fuera de flowA" style="margin-bottom:20px">
+			<h:form prependId="false">
+			 <h:panelGrid columns="1" cellpadding="10">
+			 	 <h:outputText value="flowScope.value, es vacio: #{flowScope.value}"/>
+				 <p:commandButton value="Home Page" action="/index" />
+			 </h:panelGrid>
+			</h:form>
+		</p:panel>
 	</ui:define>
-
 </ui:composition>
 </html>

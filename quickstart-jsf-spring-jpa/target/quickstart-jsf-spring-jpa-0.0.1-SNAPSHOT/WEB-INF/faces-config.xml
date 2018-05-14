@@ -10,4 +10,21 @@
 			<to-view-id>index.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>index.xhtml</display-name>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>goFlowB</from-outcome>
+			<to-view-id>/flowB/flowB-flow.xml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>flowB/flowB-flow.xml</display-name>
+		<from-view-id>/flowB/flowB-flow.xml</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

@@ -9,15 +9,14 @@
 
 <ui:composition template="/pages/common/template.xhtml">
 	<ui:define name="pageTitle">
-	    Page 1
+	    Flow A
 	</ui:define>
 	<ui:define name="body">
-		<h:form prependId="false">
-			<p>Page 1 OK</p>
-			<p>
+		<p:panel id="basic" header="Page 1 OK" style="margin-bottom:20px">
+			<h:form prependId="false">
 				<p:commandButton value="next" action="flowA1" />
-			</p>
-		</h:form>
+			</h:form>
+		</p:panel>
 	</ui:define>
 </ui:composition>
 </html>
