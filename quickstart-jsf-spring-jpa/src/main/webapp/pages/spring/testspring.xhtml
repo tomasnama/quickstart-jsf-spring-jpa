@@ -17,6 +17,17 @@
 				<h:panelGrid columns="1" cellpadding="10">
 			 		<h:outputText value="#{testController.showText}"/>
 			 	</h:panelGrid>
+			 	<p:dataTable var="check" value="#{testController.checks}">
+				    <p:column headerText="Id">
+				        <h:outputText value="#{check.id}" />
+				    </p:column>
+				    <p:column headerText="Name">
+				        <h:outputText value="#{check.name}" />
+				    </p:column>
+				    <p:column headerText="Url">
+				        <h:outputText value="#{check.url}" />
+				    </p:column>
+				</p:dataTable>
 			</h:form>
 		</p:panel>
 	</ui:define>
