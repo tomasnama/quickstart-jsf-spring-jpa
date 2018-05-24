@@ -8,6 +8,7 @@
 		<navigation-case>
 			<from-outcome>goPage2</from-outcome>
 			<to-view-id>/flowB/page2.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
@@ -16,6 +17,7 @@
 		<navigation-case>
 			<from-outcome>goPage1</from-outcome>
 			<to-view-id>/flowB/page1.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	

@@ -24,7 +24,7 @@ public class TestServiceImpl implements TestService {
 	public void init() {
 		for (int i = 1; i <= 10; i = i + 1) {
 			Check check = new Check();
-			check.setName("example"+i);
+			check.setName("example "+i);
 			check.setUrl("http://www.example.com");
 			checkRepository.save(check);
 		}

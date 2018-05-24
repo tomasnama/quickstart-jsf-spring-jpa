@@ -13,34 +13,37 @@
 		<jsf.version>2.3</jsf.version>
 		<primefaces.version>6.2</primefaces.version>
 		<spring.version>4.3.17.RELEASE</spring.version>
+		<springdata.version>1.11.12.RELEASE</springdata.version>
+		<springsecurity.version>5.0.5.RELEASE</springsecurity.version>
 		<dbh2.version>1.4.197</dbh2.version>
 		<hibernate.version>5.3.0.Final</hibernate.version>
-		<springdata.version>1.11.12.RELEASE</springdata.version>
 	</properties>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
 				<version>1.2.1.Final</version>
 				<configuration>
-                    <add-user>
-                        <users>
-                            <user>
-                                <username>admin</username>
-                                <password>password</password>
-                            </user>
-                       </users>
-                   </add-user>
-               </configuration>
+					<add-user>
+						<users>
+							<user>
+								<username>admin</username>
+								<password>password</password>
+							</user>
+						</users>
+					</add-user>
+				</configuration>
 			</plugin>
-			 <plugin>
-		      <artifactId>maven-compiler-plugin</artifactId>
-		        <configuration>
-		          <source>${java.version}</source>
-		          <target>${java.version}</target>
-		        </configuration>
-		    </plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -81,6 +84,16 @@
 	        <artifactId>spring-data-jpa</artifactId>
 	        <version>${springdata.version}</version>
 	    </dependency>
+	    <dependency>
+        	<groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-web</artifactId>
+	        <version>${springsecurity.version}</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>${springsecurity.version}</version>
+		</dependency>
 		<!-- H2 DB -->
 		<dependency>
 			<groupId>com.h2database</groupId>
