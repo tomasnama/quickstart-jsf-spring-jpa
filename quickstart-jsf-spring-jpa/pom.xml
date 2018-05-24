@@ -14,7 +14,8 @@
 		<primefaces.version>6.2</primefaces.version>
 		<spring.version>4.3.17.RELEASE</spring.version>
 		<dbh2.version>1.4.197</dbh2.version>
-		<hibernate.version>4.3.7.Final</hibernate.version>
+		<hibernate.version>5.3.0.Final</hibernate.version>
+		<springdata.version>1.11.12.RELEASE</springdata.version>
 	</properties>
 	<build>
 		<plugins>
@@ -36,8 +37,8 @@
 			 <plugin>
 		      <artifactId>maven-compiler-plugin</artifactId>
 		        <configuration>
-		          <source>1.8</source>
-		          <target>1.8</target>
+		          <source>${java.version}</source>
+		          <target>${java.version}</target>
 		        </configuration>
 		    </plugin>
 		</plugins>
@@ -78,7 +79,7 @@
 		<dependency>
 	        <groupId>org.springframework.data</groupId>
 	        <artifactId>spring-data-jpa</artifactId>
-	        <version>1.7.1.RELEASE</version>
+	        <version>${springdata.version}</version>
 	    </dependency>
 		<!-- H2 DB -->
 		<dependency>
@@ -92,6 +93,7 @@
 		    <artifactId>hibernate-entitymanager</artifactId>
 		    <version>${hibernate.version}</version>
 		</dependency>
+		<!--  Connection pool -->
 		<dependency>
 	        <groupId>com.zaxxer</groupId>
 	        <artifactId>HikariCP</artifactId>
