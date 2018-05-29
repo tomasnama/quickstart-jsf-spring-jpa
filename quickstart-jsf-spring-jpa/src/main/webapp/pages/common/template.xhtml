@@ -12,11 +12,17 @@
 <h:body>
 <p:layout fullPage="true">  
      <p:layoutUnit position="north" resizable="true" size="105" minSize="22" maxSize="100">
-     	<div class="top" > 
-			<div style="width: 100%; text-align: center;">
+     	<div class="top"> 
+			<div style="width: 80%; text-align: left; float: left;">
 				<h:graphicImage value="/resources/img/tomasapp.svg" width="75"/>
 			</div>
-     	</div>
+			<div style="width: 20%; text-align: right; float: left;">
+				<h:form onsubmit="this.action='#{request.contextPath}/logout';"
+					class="logout-form">
+					<p:commandButton value="Logout" ajax="false" />
+				</h:form>
+			</div>
+			</div>
     </p:layoutUnit>
      
     <p:layoutUnit position="west" size="206" header="Menu" resizable="true" closable="false" collapsible="true" >
