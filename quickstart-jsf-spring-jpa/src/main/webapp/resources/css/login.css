@@ -1,5 +1,14 @@
 @charset "ISO-8859-1";
 
+body {
+	margin: 0;
+    padding: 0;
+    font-family: Tahoma, Verdana, Helvetica, sans-serif !important;
+    font-weight: normal;
+    font-size: 11px;
+    background-color: #c7ceda;
+    color: #333333;
+}
 
 .logingrid {
     margin: 0 auto;

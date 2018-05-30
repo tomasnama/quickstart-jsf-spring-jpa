@@ -7,21 +7,18 @@
 
 <h:head>
 	<title>Login</title>
-	<h:outputStylesheet name="resources/css/login.css" />
+	<h:outputStylesheet library="css" name="login.css"/>
 </h:head>
+
 
 <h:body>
 	<div id="logindiv">
 		<h:form prependId="false">
 			<p:panelGrid columns="1" styleClass="logingrid">
 				<h2>Please login</h2>
-
-				<p:outputLabel value="Login failed!" styleClass="red"
-					rendered="${!empty param['error']}" />
-
+				<p:outputLabel value="Login failed!" styleClass="red" rendered="${!empty param['error']}" />
 				<p:inputText id="username" placeholder="User name" />
 				<p:password id="password" placeholder="Password" />
-
 				<p:commandButton value="Login" ajax="false" />
 			</p:panelGrid>
 		</h:form>

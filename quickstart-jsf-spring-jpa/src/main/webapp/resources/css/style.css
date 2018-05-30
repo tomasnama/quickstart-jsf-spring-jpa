@@ -1,9 +1,42 @@
 @charset "ISO-8859-1";
 
-.ui-accordion .ui-accordion-content {
-	padding: 0 0 !important;
+body {
+	margin: 0;
+    padding: 0;
+    font-family: Tahoma, Verdana, Helvetica, sans-serif !important;
+    font-weight: normal;
+    font-size: 11px;
+    background-color: #c7ceda;
+    color: #333333;
 }
 
 .top {
 	background-color: 	#E6E6FA;
+}
+
+/* overrider theme bootstrap */
+
+.ui-layout-unit {
+	background-color: transparent;
+}
+
+.ui-layout-unit .ui-layout-unit-content {
+	background-color: transparent !important;
+}
+
+.ui-accordion .ui-accordion-header .ui-icon {
+	display: inline;
+}
+
+.ui-accordion .ui-accordion-header {
+    background: #f6f7f9; 
+    box-shadow: none;
+}
+
+.ui-accordion .ui-accordion-header.ui-state-active {
+    background: white; 
+}
+
+.ui-accordion .ui-accordion-content.ui-widget-content {
+	padding: 0px 0px;
 }

@@ -16,6 +16,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+        		.antMatchers("/javax.faces.resource/**")
+        		.permitAll()
         		.anyRequest()
         		.authenticated()
         
@@ -23,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login.xhtml")
                 .permitAll()
                 .failureUrl("/login.xhtml?error=true")
+		        .defaultSuccessUrl("/faces/index.xhtml")
         
         .and().logout()
 		        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
