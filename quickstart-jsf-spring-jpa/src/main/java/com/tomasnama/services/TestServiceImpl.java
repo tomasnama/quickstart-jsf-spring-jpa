@@ -28,6 +28,7 @@ public class TestServiceImpl implements TestService {
 			check.setUrl("http://www.example.com");
 			checkRepository.save(check);
 		}
+		
 	}
 
 	public String sayHello() {

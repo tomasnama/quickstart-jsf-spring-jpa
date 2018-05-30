@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -22,12 +23,17 @@ public class TestController  implements Serializable {
 	@Autowired
 	private TestServiceImpl testService;
 	private List<Check> checks;
+	private String name;
 	
 	
 	@PostConstruct
     public void init() {
 		checks = testService.getChecks();
 	}
+	
+	public void filter(ActionEvent actionEvent) {
+		 System.out.println(name);
+    }
 	
 	public String getShowText() {
 		if (testService!=null) {
@@ -47,6 +53,14 @@ public class TestController  implements Serializable {
 
 	public void setChecks(List<Check> checks) {
 		this.checks = checks;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

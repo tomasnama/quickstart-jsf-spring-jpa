@@ -12,12 +12,13 @@
 	    Test Spring
 	</ui:define>
 	<ui:define name="body">
-		<p:panel id="basic" header="Test Spring" style="margin-bottom:20px">
+		<p:panel id="basic" header="#{testController.showText}" style="margin-bottom:20px">
 			<h:form prependId="false">
-				<h:panelGrid columns="1" cellpadding="10">
-			 		<h:outputText value="#{testController.showText}"/>
+				<h:panelGrid columns="2" cellpadding="10">
+			 		<p:inputText label="Name" value="#{testController.name}"/>
+			 		<p:commandButton value="Filter" id="ajax" update="tCheck" actionListener="#{testController.filter}" />
 			 	</h:panelGrid>
-			 	<p:dataTable var="check" value="#{testController.checks}">
+			 	<p:dataTable var="check" value="#{testController.checks}" id="tCheck">
 				    <p:column headerText="Id">
 				        <h:outputText value="#{check.id}" />
 				    </p:column>
