@@ -14,8 +14,9 @@
 	<ui:define name="body">
 		<p:panel id="basic" header="#{testController.showText}" style="margin-bottom:20px">
 			<h:form prependId="false">
-				<h:panelGrid columns="2" cellpadding="10">
-			 		<p:inputText label="Name" value="#{testController.name}"/>
+				<h:panelGrid columns="3" cellpadding="10">
+					<h:outputLabel for="name" value="Name" />
+			 		<p:inputText label="Name" value="#{testController.name}" id="name"/>
 			 		<p:commandButton value="Filter" id="ajax" update="tCheck" actionListener="#{testController.filter}" />
 			 	</h:panelGrid>
 			 	<p:dataTable var="check" value="#{testController.checks}" id="tCheck">

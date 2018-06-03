@@ -1,5 +1,6 @@
 package com.tomasnama.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,11 +16,13 @@ public class TestServiceImpl implements TestService {
 
 	@Autowired
 	private CheckRepository checkRepository;
-
-	public List<Check> getChecks() {
-		return checkRepository.findAll();
+	private List<Check> checks = new ArrayList<Check>();
+	
+	public List<Check> getChecks(String name) {
+		return checkRepository.findByName(name);
 	}
-
+	
+	
 	@PostConstruct
 	public void init() {
 		for (int i = 1; i <= 10; i = i + 1) {
@@ -27,6 +30,7 @@ public class TestServiceImpl implements TestService {
 			check.setName("example "+i);
 			check.setUrl("http://www.example.com");
 			checkRepository.save(check);
+			checks.add(check);
 		}
 		
 	}
@@ -34,5 +38,15 @@ public class TestServiceImpl implements TestService {
 	public String sayHello() {
 		return "Hello from spring service";
 	}
+
+	public void setChecks(List<Check> checks) {
+		this.checks = checks;
+	}
+
+	public List<Check> getChecks() {
+		return checks;
+	}
+	
+	
 
 }
