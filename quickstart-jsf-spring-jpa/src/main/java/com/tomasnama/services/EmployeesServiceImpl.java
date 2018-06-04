@@ -1,5 +1,8 @@
 package com.tomasnama.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 	private DepartamentRepository departamentRepository;
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
 
 	@PostConstruct
 	public void init() {
@@ -35,5 +39,15 @@ public class EmployeesServiceImpl implements EmployeesService {
 		employeeRepository.save(new Employee("Carlos Jesus", "Manager", 1000, rrhh));
 		employeeRepository.save(new Employee("Antonia la piedra", "CEO", 1000, direccion));
 	}
-
+	
+	public List<Departament> getDepartaments() {
+		List<Departament> departaments = new ArrayList<Departament>();
+		departaments.addAll(departamentRepository.findAll());
+		return departaments;
+	}
+	
+	public Departament getDepartament(long id) {
+		return departamentRepository.findOne(id);
+	}
+	
 }
