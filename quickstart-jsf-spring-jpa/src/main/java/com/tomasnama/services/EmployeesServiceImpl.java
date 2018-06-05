@@ -32,22 +32,27 @@ public class EmployeesServiceImpl implements EmployeesService {
 		Departament contabilidad = departamentRepository.findByName("Contabilidad");
 		Departament rrhh = departamentRepository.findByName("RRHH");
 		Departament direccion = departamentRepository.findByName("Direccion");
-		departamentRepository.findByName("Informatica");
-		employeeRepository.save(new Employee("Pepe Luis", "Manager", 1000, direccion));
-		employeeRepository.save(new Employee("Luis Antonio", "Manager", 1000, contabilidad));
-		employeeRepository.save(new Employee("Tomás Navarro", "Developer", 10000, informatica));
-		employeeRepository.save(new Employee("Carlos Jesus", "Manager", 1000, rrhh));
-		employeeRepository.save(new Employee("Antonia la piedra", "CEO", 1000, direccion));
+		
+		for (int i = 0; i < 100; i++) {
+			employeeRepository.save(new Employee("Pepe Luis", "Manager", 1000, direccion));
+			employeeRepository.save(new Employee("Luis Antonio", "Manager", 1000, contabilidad));
+			employeeRepository.save(new Employee("Tomás Navarro", "Developer", 10000, informatica));
+			employeeRepository.save(new Employee("Carlos Jesus", "Manager", 1000, rrhh));
+			employeeRepository.save(new Employee("Antonia la piedra", "CEO", 1000, direccion));
+		}
+		
 	}
 	
 	public List<Departament> getDepartaments() {
-		List<Departament> departaments = new ArrayList<Departament>();
-		departaments.addAll(departamentRepository.findAll());
-		return departaments;
+		return departamentRepository.findAll();
 	}
 	
 	public Departament getDepartament(long id) {
 		return departamentRepository.findOne(id);
+	}
+	
+	public List<Employee> getEmployees() {
+		return employeeRepository.findAll();
 	}
 	
 }
