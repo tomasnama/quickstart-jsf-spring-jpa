@@ -90,6 +90,16 @@
 			<artifactId>primefaces</artifactId>
 			<version>${primefaces.version}</version>
 		</dependency>
+		<dependency>
+		    <groupId>com.lowagie</groupId>
+		    <artifactId>itext</artifactId>
+		    <version>2.1.7</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>3.13</version>
+		</dependency>
 		<!--  Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

@@ -45,4 +45,13 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>*</display-name>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>goFeching</from-outcome>
+			<to-view-id>/pages/spring/feching.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

@@ -5,13 +5,13 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-<title><ui:insert name="pageTitle">Viator</ui:insert></title>
+<title><ui:insert name="pageTitle">Quick</ui:insert></title>
 	<h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 
 <h:body>
 <p:layout fullPage="true">  
-     <p:layoutUnit position="north" resizable="true" size="105" minSize="22" maxSize="100">
+     <p:layoutUnit position="north" resizable="true" size="90" minSize="22" maxSize="100">
      	<div class="top"> 
 			<div style="width: 80%; text-align: left; float: left;">
 				<h:graphicImage value="/resources/img/tomasapp.svg" width="75"/>
@@ -38,8 +38,9 @@
 	    	</p:accordionPanel>
 	        <p:accordionPanel>
 		        <p:tab title="Test Spring">	
-	                <p:commandButton action="/pages/spring/testspring"  value="Test Spring" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
+	                <p:commandButton action="/pages/spring/testspring"  value="Filter" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
 	                <p:commandButton action="goMasterDetail"  value="Master - Detail" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
+	                <p:commandButton action="goFeching"  value="Feching data" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
 		        </p:tab>
 	    	</p:accordionPanel>
 	     </h:form>	

@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/common/template.xhtml">
+	<ui:define name="pageTitle">
+	   Feching data
+	</ui:define>
+	<ui:define name="body">
+		<p:panel id="basic" header="Feching data"
+			style="margin-bottom:20px">
+			<h:form prependId="false">
+				<p:dataTable var="row"
+					value="#{fechingController.employees}" id="temp" paginator="true"
+					scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="300"
+                    resizableColumns="true" paginatorTemplate="{Exporters}">
+                    <f:facet name="{Exporters}">
+			            <h:commandLink value="xls">
+			                <p:dataExporter type="xls" target="temp" fileName="employees" />
+			            </h:commandLink>
+			            <p:spacer width="15px"/>
+			            <h:commandLink value="pdf">
+			                <p:dataExporter type="pdf" target="temp" fileName="employees"/>
+			            </h:commandLink>
+			            <p:spacer width="15px"/>
+			            <h:commandLink value="csv">
+			                <p:dataExporter type="csv" target="temp" fileName="employees" />
+			            </h:commandLink>
+			            <p:spacer width="15px"/>
+			            <h:commandLink value="xml">
+			                <p:dataExporter type="xml" target="temp" fileName="employees" />
+			            </h:commandLink>
+			        </f:facet>
+					<p:column headerText="Id" sortBy="#{row.id}">
+						<h:outputText value="#{row.id}" />
+					</p:column>
+					<p:column headerText="Name" sortBy="#{row.name}">
+						<h:outputText value="#{row.name}" />
+					</p:column>
+					<p:column headerText="Designation" sortBy="#{row.name}">
+						<h:outputText value="#{row.designation}" />
+					</p:column>
+					<p:column headerText="Salary" sortBy="#{row.salary}">
+						<h:outputText value="#{row.salary}" />
+					</p:column>
+					<p:column headerText="Department">
+						<h:outputText value="#{row.department.name}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
