@@ -17,6 +17,7 @@
 				<h:graphicImage value="/resources/img/tomasapp.svg" width="75"/>
 			</div>
 			<div style="width: 20%; text-align: right; float: left;">
+				<h:outputText value="#{loginController.username}"/>
 				<h:form onsubmit="this.action='#{request.contextPath}/logout';"
 					class="logout-form">
 					<p:commandButton value="Logout" ajax="false" />
