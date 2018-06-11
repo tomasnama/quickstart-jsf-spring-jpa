@@ -1,49 +1,49 @@
 package com.tomasnama.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.tomasnama.entities.Employee;
+import com.tomasnama.model.EmployeeLazyDataModel;
 import com.tomasnama.services.EmployeesServiceImpl;
 
 @Named("fechingController")
 @ViewScoped
-public class FechingController implements Serializable{
+public class FechingController implements Serializable {
+	
+	private static final Logger LOG = LogManager.getLogger(PrintController.class);
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Autowired
-	private EmployeesServiceImpl employeesService;
-	
-	private List<Employee> employees = new ArrayList<Employee>();
-	
 	@PostConstruct
-    public void init() {
-		employees.clear();
-		employees.addAll(employeesService.getEmployees());
+	public void init(){
+		LOG.info(employeesService.employeeCount());
 	}
 
-	public List<Employee> getEmployees() {
+	@Autowired
+	private EmployeeLazyDataModel employees;
+	@Autowired
+	private EmployeesServiceImpl employeesService;
+
+
+	public EmployeeLazyDataModel getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(List<Employee> employees) {
+
+	public void setEmployees(EmployeeLazyDataModel employees) {
 		this.employees = employees;
 	}
-	
-	
-	
-	
-	
+	 
+	 
 
 }
