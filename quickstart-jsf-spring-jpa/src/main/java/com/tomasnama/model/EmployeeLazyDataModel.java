@@ -5,31 +5,36 @@ import java.util.Map;
 
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
-import org.springframework.stereotype.Component;
 
+import com.tomasnama.entities.Departament;
 import com.tomasnama.entities.Employee;
+import com.tomasnama.services.EmployeesServiceImpl;
 
 
-@Component
 public class EmployeeLazyDataModel extends LazyDataModel<Employee>{
+	
+	private EmployeesServiceImpl employeesService;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	//@Autowired
-	//private EmployeesServiceImpl employeesService;
-
-	public EmployeeLazyDataModel() {
-		//employeesService.employeeCount();
-		this.setRowCount(500);
+	public EmployeeLazyDataModel(EmployeesServiceImpl employeesService) {
+		this.employeesService = employeesService;
+		this.setRowCount(this.employeesService.employeeCount());
 	}
 
 	@Override
 	public List<Employee> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
-		List<Employee> list = null; //employeesService.getEmployeeList(first, pageSize);
+		List<Employee> list = employeesService.getEmployeeList(first, pageSize);
 		return list;
 	}
+
+	public EmployeesServiceImpl getEmployeesService() {
+		return employeesService;
+	}
+
+	public void setEmployeesService(EmployeesServiceImpl employeesService) {
+		this.employeesService = employeesService;
+	}
+	
+	
 
 	
 	

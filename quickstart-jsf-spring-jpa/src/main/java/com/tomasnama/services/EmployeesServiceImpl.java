@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -43,7 +44,6 @@ public class EmployeesServiceImpl implements EmployeesService {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Employee> getEmployeeList(int start, int size) {
 
 		// Query query = em.createQuery("From Employee");
@@ -53,7 +53,8 @@ public class EmployeesServiceImpl implements EmployeesService {
 		// return list;
 
 		Pageable pageable = new PageRequest(start, size);
-		return (List<Employee>) employeeRepository.findAll(pageable);
+		Page<Employee>  page = employeeRepository.findAll(pageable);
+		return page.getContent();
 	}
 	
 	public int employeeCount() {

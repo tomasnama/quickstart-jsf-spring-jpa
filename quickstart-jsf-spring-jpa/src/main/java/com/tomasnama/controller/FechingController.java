@@ -18,22 +18,17 @@ import com.tomasnama.services.EmployeesServiceImpl;
 public class FechingController implements Serializable {
 	
 	private static final Logger LOG = LogManager.getLogger(PrintController.class);
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
+	@Autowired
+	private EmployeesServiceImpl employeesService;
+	
+	private EmployeeLazyDataModel employees;
 	
 	@PostConstruct
 	public void init(){
-		LOG.info(employeesService.employeeCount());
+		 employees = new EmployeeLazyDataModel(employeesService);
 	}
-
-	@Autowired
-	private EmployeeLazyDataModel employees;
-	@Autowired
-	private EmployeesServiceImpl employeesService;
-
+	
 
 	public EmployeeLazyDataModel getEmployees() {
 		return employees;

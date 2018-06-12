@@ -15,7 +15,7 @@
 				<p:dataTable var="row"
 					value="#{fechingController.employees}" id="temp" paginator="true"
 					scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="300"
-                    resizableColumns="true" paginatorTemplate="{Exporters}">
+                    resizableColumns="true" paginatorTemplate="{Exporters}" lazy="true">
                     <f:facet name="{Exporters}">
 			            <h:commandLink value="xls">
 			                <p:dataExporter type="xls" target="temp" fileName="employees" />
