@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,11 +14,14 @@ import org.springframework.stereotype.Service;
 
 import com.tomasnama.entities.Departament;
 import com.tomasnama.entities.Employee;
+import com.tomasnama.model.EmployeeLazyDataModel;
 import com.tomasnama.repositories.DepartamentRepository;
 import com.tomasnama.repositories.EmployeeRepository;
 
 @Service
 public class EmployeesServiceImpl implements EmployeesService {
+	
+	private static final Logger LOG = LogManager.getLogger(EmployeesServiceImpl.class);
 
 	@Autowired
 	private DepartamentRepository departamentRepository;
@@ -44,17 +49,10 @@ public class EmployeesServiceImpl implements EmployeesService {
 
 	}
 
-	public List<Employee> getEmployeeList(int start, int size) {
-
-		// Query query = em.createQuery("From Employee");
-		// query.setFirstResult(start);
-		// query.setMaxResults(size);
-		// List <Employee> list = query.getResultList();
-		// return list;
-
-		Pageable pageable = new PageRequest(start, size);
-		Page<Employee>  page = employeeRepository.findAll(pageable);
-		return page.getContent();
+	public List<Employee> getEmployeeList(int page, int size) {
+		Pageable pageable = new PageRequest(page, size);
+		Page<Employee>  listPage = employeeRepository.findAll(pageable);
+		return listPage.getContent();
 	}
 	
 	public int employeeCount() {
@@ -70,7 +68,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 	}
 
 	public List<Employee> getEmployees() {
-		return employeeRepository.findAll();
+		return (List<Employee>) employeeRepository.findAll();
 	}
 
 }

@@ -12,9 +12,9 @@
 		<p:panel id="basic" header="Feching data"
 			style="margin-bottom:20px">
 			<h:form prependId="false">
-				<p:dataTable var="row"
+				<p:dataTable var="row" rows="25"
 					value="#{fechingController.employees}" id="temp" paginator="true"
-					scrollRows="20" scrollable="true" liveScroll="true" scrollHeight="300"
+					scrollRows="25" scrollable="true" liveScroll="true" scrollHeight="300"
                     resizableColumns="true" paginatorTemplate="{Exporters}" lazy="true">
                     <f:facet name="{Exporters}">
 			            <h:commandLink value="xls">
