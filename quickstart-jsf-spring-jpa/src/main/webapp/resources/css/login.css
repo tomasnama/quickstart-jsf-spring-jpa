@@ -1,19 +1,42 @@
 @charset "ISO-8859-1";
 
 body {
-	margin: 0;
+  	margin: 0;
     padding: 0;
     font-family: Tahoma, Verdana, Helvetica, sans-serif !important;
     font-weight: normal;
     font-size: 11px;
+    background-repeat: repeat-x;
+    background-position: top left;
     background-color: #c7ceda;
     color: #333333;
 }
 
-.logingrid {
-    margin: 0 auto;
+.top {
+	width: 100%;
+	height: 100px;
 }
 
-.red {
-	color: red;
+.loginFailed {
+    padding: 4px 8px;
+    color: #AD0E25;
+    font-size: 10px;
+}
+
+.loginpanel {
+    background: #FFFFFF;
+    border: 1px solid #316D91;
+    margin-left: 35%;
+    margin-top: 5%;
+    padding: 7px 9px 10px;
+    width: 340px;
+}
+
+.input-row {
+	font-weight: bold;
+}
+
+.button-row {
+	width: 260px;
+	text-align: right; 
 }

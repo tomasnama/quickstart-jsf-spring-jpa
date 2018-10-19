@@ -9,13 +9,43 @@
 	   Feching data
 	</ui:define>
 	<ui:define name="body">
-		<p:panel id="basic" header="Feching data"
-			style="margin-bottom:20px">
-			<h:form prependId="false">
-				<p:dataTable var="row" rows="25"
-					value="#{fechingController.employees}" id="temp" paginator="true"
-					scrollRows="25" scrollable="true" liveScroll="true" scrollHeight="300"
-                    resizableColumns="true" paginatorTemplate="{Exporters}" lazy="true">
+		<h:form prependId="false" id="empForm">
+			<p:growl id="msg" showDetail="true" sticky="true" />  
+			<p:panel id="basic" header="Feching data" style="margin-bottom:20px">
+				<script>
+					function saveScrollPos() {
+						var scrollPos = jQuery('#temp .ui-datatable-scrollable-body').prop('scrollTop');
+						document.getElementById('scrollPos').value = scrollPos;
+					}
+				
+					function autoScroll() {
+						var scrollPos = document.getElementById('scrollPos').value;
+						//jQuery('#temp .ui-datatable-scrollable-body').hide(1000, visible);
+						jQuery('#temp .ui-datatable-scrollable-body').animate({scrollTop : scrollPos}, scrollPos, visible);
+						
+					}
+					
+					function visible() {
+						//jQuery('#temp .ui-datatable-scrollable-body').show();
+					}
+				</script>
+				<h:inputText id="scrollPos" style="display: none;" />
+				<p:dataTable 
+					var="row" 
+					rows="25"
+					value="#{fechingController.employees}" 
+					id="temp" 
+					paginator="true"
+					scrollRows="25" 
+					scrollable="true" 
+					liveScroll="true" 
+					scrollHeight="300"
+                    resizableColumns="true" 
+                    paginatorTemplate="{Exporters} {RowsPerPageDropdown}" 
+                    lazy="true"
+                    selectionMode="single"
+                    rowKey="#{row.id}"
+                    selection="#{fechingController.selected}">
                     <f:facet name="{Exporters}">
 			            <h:commandLink value="xls">
 			                <p:dataExporter type="xls" target="temp" fileName="employees" />
@@ -33,24 +63,51 @@
 			                <p:dataExporter type="xml" target="temp" fileName="employees" />
 			            </h:commandLink>
 			        </f:facet>
-					<p:column headerText="Id" sortBy="#{row.id}">
+			        <p:ajax event="rowSelect" listener="#{fechingController.onRowSelect}" onstart="saveScrollPos()"/>
+			        <f:facet name="header">
+			        	<p:commandButton value="edit" actionListener="#{fechingController.edit}" update="formDialog msg empForm" ajax="true"/>
+			        </f:facet>
+					<p:column headerText="Id"  sortable="true"  sortBy="#{row.id}" filterable="true" filterBy="#{row.id}">
 						<h:outputText value="#{row.id}" />
 					</p:column>
-					<p:column headerText="Name" sortBy="#{row.name}">
+					<p:column headerText="Name"  sortable="true"  sortBy="#{row.name}" filterable="true" filterBy="#{row.name}">
 						<h:outputText value="#{row.name}" />
 					</p:column>
-					<p:column headerText="Designation" sortBy="#{row.name}">
+					<p:column headerText="Designation"  sortable="true" sortBy="#{row.designation}" filterable="true" filterBy="#{row.designation}">
 						<h:outputText value="#{row.designation}" />
 					</p:column>
-					<p:column headerText="Salary" sortBy="#{row.salary}">
+					<p:column headerText="Salary"  sortable="true" sortBy="#{row.salary}" filterable="true" filterBy="#{row.salary}">
 						<h:outputText value="#{row.salary}" />
 					</p:column>
-					<p:column headerText="Department">
-						<h:outputText value="#{row.department.name}" />
+					<p:column headerText="Department" sortable="true" sortBy="#{row.department.name}" filterable="true" filterBy="#{row.department.name}">
+						<h:outputText value="#{row.department.name}"  />
 					</p:column>
 				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+	<ui:define name="dialogs">
+		<p:dialog header="Edit" widgetVar="empDialog" modal="true" width="450" height="180" resizable="false">
+			<h:form prependId="false" id="formDialog">
+				<h:panelGrid columns="2" rendered="#{not empty fechingController.selected}" id="gridForm">
+					<p:outputLabel value="name" />
+					<p:inputText value="#{fechingController.selected.name}" style="width:150px;" required="true" />
+					
+					<p:outputLabel value="designation"/>
+					<p:inputText value="#{fechingController.selected.designation}" style="width: 300px" required="true" />
+					
+					<p:outputLabel value="salary" />
+					<p:inputText value="#{fechingController.selected.salary}" style="width: 300px" maxlength="99"/>
+				</h:panelGrid>
+				<h:panelGrid columns="1" cellpadding="5" style="text-align : right !important;" width="100%">
+					<h:panelGroup layout="horizontal">
+						<p:commandButton value="Save" icon="ui-icon-check" actionListener="#{fechingController.save}" update="temp" oncomplete="autoScroll()"/>
+						<p:spacer width="5" />
+						<p:commandButton value="Cancel" icon="ui-icon-closethick" immediate="true" actionListener="#{fechingController.cancel}"/>
+					</h:panelGroup>
+				</h:panelGrid>
 			</h:form>
-		</p:panel>
+		</p:dialog>
 	</ui:define>
 </ui:composition>
 </html>

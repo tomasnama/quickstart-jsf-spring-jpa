@@ -5,13 +5,32 @@ body {
     padding: 0;
     font-family: Tahoma, Verdana, Helvetica, sans-serif !important;
     font-weight: normal;
-    font-size: 11px;
+    font-size: 9px;
+    background-repeat: repeat-x;
+    background-position: top left;
     background-color: #c7ceda;
     color: #333333;
 }
 
-.top {
-	background-color: 	#E6E6FA;
+.layoutUnitnorth {
+	background-color: #c9cfdb !important;
+	background-repeat: no-repeat;
+}
+
+.layoutUnitnorth .top {
+	vertical-align: top;
+    width: 100%;
+}
+
+.layoutUnitwest {
+	background-color: white !important;
+} 
+
+.buttonmenu {
+	width: 98% !important;
+	margin-bottom: 2px;
+	margin-left: 2px;
+	text-align: left !important;
 }
 
 /* overrider theme bootstrap */
@@ -22,6 +41,7 @@ body {
 
 .ui-layout-unit .ui-layout-unit-content {
 	background-color: transparent !important;
+	
 }
 
 .ui-accordion .ui-accordion-header .ui-icon {
@@ -29,7 +49,7 @@ body {
 }
 
 .ui-accordion .ui-accordion-header {
-    background: #f6f7f9; 
+    background: #f6f7f9 !important;
     box-shadow: none;
 }
 
@@ -40,3 +60,25 @@ body {
 .ui-accordion .ui-accordion-content.ui-widget-content {
 	padding: 0px 0px;
 }
+
+.ui-datatable .ui-datatable-header, .ui-datatable .ui-datatable-footer {
+	text-align: left !important;
+}
+
+.ui-button {
+	width: 100px;
+}
+
+.ui-datatable thead th, .ui-datatable tfoot td {
+    text-align: left !important;
+}
+
+.layoutUnitnorth .ui-layout-unit-header, .ui-layout-unit-footer {
+    padding: 4px 0 0 0 !important;
+}
+
+.layoutUnitnorth .ui-widget-header {
+	border: 0 none !important;
+	background: transparent !important;
+}
+

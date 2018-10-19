@@ -10,8 +10,8 @@
 </h:head>
 
 <h:body>
-<p:layout fullPage="true">  
-     <p:layoutUnit position="north" resizable="true" size="90" minSize="22" maxSize="100">
+<p:layout fullPage="true" id="layoutUnitnorth">  
+     <p:layoutUnit position="north" resizable="true" size="95" minSize="22" maxSize="100" styleClass="layoutUnitnorth" collapsible="true" header=" ">
      	<div class="top"> 
 			<div style="width: 80%; text-align: left; float: left;">
 				<h:graphicImage value="/resources/img/tomasapp.svg" width="75"/>
@@ -26,26 +26,26 @@
 			</div>
     </p:layoutUnit>
      
-    <p:layoutUnit position="west" size="206" header="Menu" resizable="true" closable="false" collapsible="true" >
+    <p:layoutUnit position="west" size="206" header="Menu" resizable="true" closable="false" collapsible="true" styleClass="layoutUnitwest" >
     <h:form id="form">           
     	<p:growl id="msgs" showDetail="true" />
     		<p:commandButton value="Home Page" action="home" style="width:95%" />
 	        <p:accordionPanel>
 		        <p:tab title="Test Flows">	
-	                <p:commandButton action="flowA"  value="Flow A" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
-	                <p:commandButton action="/flowB/page1"  value="Flow B" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
+	                <p:commandButton action="flowA"  value="Flow A" icon="ui-icon-arrowreturn-1-e" styleClass="buttonmenu"/>
+	                <p:commandButton action="/flowB/page1"  value="Flow B" icon="ui-icon-arrowreturn-1-e" styleClass="buttonmenu"/>
 		        </p:tab>
 	    	</p:accordionPanel>
 	        <p:accordionPanel>
 		        <p:tab title="Test Spring">	
-	                <p:commandButton action="/pages/spring/testspring"  value="Filter" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
-	                <p:commandButton action="goMasterDetail"  value="Master - Detail" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
-	                <p:commandButton action="goFeching"  value="Feching data" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
+	                <p:commandButton action="/pages/spring/testspring"  value="Filter" icon="ui-icon-arrowreturn-1-e" styleClass="buttonmenu"/>
+	                <p:commandButton action="goMasterDetail"  value="Master - Detail" icon="ui-icon-arrowreturn-1-e" styleClass="buttonmenu"/>
+	                <p:commandButton action="goFeching"  value="Feching data" icon="ui-icon-arrowreturn-1-e" styleClass="buttonmenu"/>
 		        </p:tab>
 	    	</p:accordionPanel>
 	    	<p:accordionPanel>
 	    	    <p:tab title="Utils">	
-	                <p:commandButton action="goPrint" value="Printers" icon="ui-icon-arrowreturn-1-e" style="width:95%"/>
+	                <p:commandButton action="goPrint" value="Printers" icon="ui-icon-arrowreturn-1-e" styleClass="buttonmenu"/>
 	            </p:tab>
 	    	</p:accordionPanel>
 	     </h:form>	
@@ -56,6 +56,8 @@
         
         </ui:insert>
     </p:layoutUnit>
+    
+    <ui:insert name="dialogs">  </ui:insert>
  
 </p:layout>
 

@@ -9,23 +9,25 @@
 	    Master / Detail
 	</ui:define>
 	<ui:define name="body">
-		<p:panel id="basic" header="Master / Detail"
-			style="margin-bottom:20px">
-			<h:form prependId="false">
-				<p:dataTable var="master" selectionMode="single" rowKey="#{master.id}"
+		<h:form prependId="false">
+			<p:panel id="basic1" header="Master" style="margin-bottom:20px">
+				<p:dataTable var="master" selectionMode="single"
+					rowKey="#{master.id}" scrollHeight="300"
 					value="#{masterdetailController.departaments}" id="tMaster"
 					selection="#{masterdetailController.currentDept}">
-					<p:ajax event="rowSelect" listener="#{masterdetailController.onRowSelect}" update="@form"/>
+					<p:ajax event="rowSelect"
+						listener="#{masterdetailController.onRowSelect}" update="@form" />
 					<p:column headerText="Id">
 						<h:outputText value="#{master.id}" />
 					</p:column>
 					<p:column headerText="Name">
 						<h:outputText value="#{master.name}" />
 					</p:column>
-				</p:dataTable> 
-				<p:dataTable var="detail"
-					value="#{masterdetailController.employees}"
-					id="tDetail">
+				</p:dataTable>
+			</p:panel>
+			<p:panel id="basic2" header="Detail">
+				<p:dataTable var="detail" scrollHeight="300" scrollable="true"
+					value="#{masterdetailController.employees}" id="tDetail">
 					<p:column headerText="Id">
 						<h:outputText value="#{detail.id}" />
 					</p:column>
@@ -39,8 +41,9 @@
 						<h:outputText value="#{detail.salary}" />
 					</p:column>
 				</p:dataTable>
-			</h:form>
-		</p:panel>
+
+			</p:panel>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

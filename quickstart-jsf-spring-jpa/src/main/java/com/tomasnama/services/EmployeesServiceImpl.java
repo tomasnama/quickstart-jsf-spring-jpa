@@ -1,6 +1,7 @@
 package com.tomasnama.services;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -10,11 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tomasnama.entities.Departament;
 import com.tomasnama.entities.Employee;
-import com.tomasnama.model.EmployeeLazyDataModel;
+import com.tomasnama.model.FilterEmployees;
 import com.tomasnama.repositories.DepartamentRepository;
 import com.tomasnama.repositories.EmployeeRepository;
 
@@ -70,5 +72,27 @@ public class EmployeesServiceImpl implements EmployeesService {
 	public List<Employee> getEmployees() {
 		return (List<Employee>) employeeRepository.findAll();
 	}
+	
+	public Employee findEmployee(Long id) {
+		return employeeRepository.findOne(id);
+	}
+
+	public long employeeCount(Map<String, Object> filter) {
+		FilterEmployees spec = new FilterEmployees(filter);
+		return employeeRepository.count(spec);
+	}
+
+	public List<Employee> getEmployeeList(int page, int pageSize, Sort sort, Map<String, Object> filter) {
+		Pageable pageable = new PageRequest(page, pageSize, sort);
+		FilterEmployees spec = new FilterEmployees(filter);
+		Page<Employee>  listPage = employeeRepository.findAll(spec, pageable);
+		return listPage.getContent();
+
+	}
+
+	public void save(Employee employee) {
+		employeeRepository.save(employee);
+	}
+
 
 }

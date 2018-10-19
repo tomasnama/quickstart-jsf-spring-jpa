@@ -5,44 +5,47 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
-import com.tomasnama.controller.PrintController;
-import com.tomasnama.entities.Departament;
 import com.tomasnama.entities.Employee;
 import com.tomasnama.services.EmployeesServiceImpl;
 
 
-public class EmployeeLazyDataModel extends LazyDataModel<Employee>{
+public class EmployeeLazyDataModel extends BaseLazyDataModel<Employee>{
 	
 	private static final Logger LOG = LogManager.getLogger(EmployeeLazyDataModel.class);
 	
 	private EmployeesServiceImpl employeesService;
+	List<Employee> datasource;
 
-	public EmployeeLazyDataModel(EmployeesServiceImpl employeesService) {
+	public EmployeeLazyDataModel(EmployeesServiceImpl employeesService,  Map<String, Object> filter) {
 		this.employeesService = employeesService;
-		this.setRowCount(this.employeesService.employeeCount());
+		this.customfilter = filter;
 	}
+	
+	@Override
+	public Employee getRowData(String rowKey) {
+		Long longRowKey = new Long(rowKey);
+		return employeesService.findEmployee(longRowKey);
+	}
+	
+	@Override
+    public Object getRowKey(Employee event) {
+        return event.getId();
+    }
+
 
 	@Override
-	public List<Employee> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
+	public List<Employee> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filter) {
 		int page = first / pageSize;
-		LOG.info("page: "+page+" pageSize:" +pageSize);
-		List<Employee> list = employeesService.getEmployeeList(page, pageSize);
-		return list;
-	}
+		if (!filter.isEmpty()) {
+			this.customfilter.putAll(filter);
+		}
+		this.setRowCount((int)this.employeesService.employeeCount(this.customfilter));
+		datasource = employeesService.getEmployeeList(page, pageSize, this.getSort(sortField, sortOrder), this.customfilter);
+		return datasource;
 
-	public EmployeesServiceImpl getEmployeesService() {
-		return employeesService;
 	}
-
-	public void setEmployeesService(EmployeesServiceImpl employeesService) {
-		this.employeesService = employeesService;
-	}
-	
-	
-
 	
 	
 }
