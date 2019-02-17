@@ -173,7 +173,7 @@
             <version>${log4j2.version}</version>
         </dependency>
         <!-- theme -->
-        <dependency>
+       <dependency>
 			<groupId>org.primefaces.themes</groupId>
 			<artifactId>bootstrap</artifactId>
 			<version>1.0.10</version>

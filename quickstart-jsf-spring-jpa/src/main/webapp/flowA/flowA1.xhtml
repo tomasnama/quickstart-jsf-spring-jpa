@@ -16,7 +16,9 @@
 			<h:form prependId="false">
 			 <h:panelGrid columns="2" cellpadding="10">
 			 	<h:outputText value="value"/>
-			 	<p:inputText id="input" value="#{flowScope.value}" rendered="true" />
+			 	<p:inputText id="input1" value="#{flowScope.value}" rendered="true" />
+			 	<h:outputText value="name"/>
+			 	<p:inputText id="input2" value="#{testController.name}" rendered="true" />
 			 	<p:commandButton id="back" value="back" action="flowA" />
 				<p:commandButton id="next" value="next" action="flowA2" />
 			 </h:panelGrid>
