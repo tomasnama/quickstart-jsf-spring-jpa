@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/common/template.xhtml">
+	<ui:define name="pageTitle">
+	    Page A
+	</ui:define>
+	<ui:define name="body">
+		<p:panel id="basic" header="Page A" style="margin-bottom:20px">
+			<h:form prependId="false">
+				<h:panelGrid columns="1" cellpadding="10">
+			 		<h:outputText value="Page A"/>
+			 		<p:commandButton id="back" value="home" action="home" />
+			 		<p:commandButton id="goA" value="GO B" action="/params/pageB.xhtml?faces-redirect=true" >
+			 			<f:param name="param1" value="test1" />
+			 		</p:commandButton>
+					
+			 	</h:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
