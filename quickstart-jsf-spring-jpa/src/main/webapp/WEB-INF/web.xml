@@ -39,4 +39,14 @@
     <servlet-name>print</servlet-name>
     <url-pattern>/print</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>corsServlet</display-name>
+    <servlet-name>corsServlet</servlet-name>
+    <servlet-class>com.tomasnama.servlet.CorsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>corsServlet</servlet-name>
+    <url-pattern>/corsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
