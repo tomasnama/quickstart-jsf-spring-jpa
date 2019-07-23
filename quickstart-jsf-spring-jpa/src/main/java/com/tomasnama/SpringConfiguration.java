@@ -11,6 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.tomasnama.repositories.common.BaseRepositoryImpl;
 import com.zaxxer.hikari.HikariDataSource;
 
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -20,7 +21,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 @Configuration
 @ComponentScan
 @EnableTransactionManagement
-@EnableJpaRepositories
+@EnableJpaRepositories(repositoryBaseClass = BaseRepositoryImpl.class)
 public class SpringConfiguration {
 	/*
 	 * @Bean public TestService testService() { return new TestServiceImpl(); }

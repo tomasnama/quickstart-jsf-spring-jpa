@@ -1,11 +1,11 @@
 package com.tomasnama.repositories;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.tomasnama.entities.Employee;
+import com.tomasnama.repositories.common.BaseRepository;
 
-public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long>,  JpaSpecificationExecutor<Employee> {
+public interface EmployeeRepository extends BaseRepository<Employee, Long>,  JpaSpecificationExecutor<Employee> {
 
 
 }
